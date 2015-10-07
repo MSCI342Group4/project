@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+RewriteRule ^(.*)$ - [E=REWRITE_BASE:%1]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ %{ENV:REWRITE_BASE}index.php [QSA,L]
+# Input the credetials for you database
+SetEnv DBUSER 
+SetEnv DBPASS 
